@@ -1,0 +1,35 @@
+    class Solution {
+    public:
+        // Alphanumeric check karne ka sahi tareeqa
+        // bool isAlphanumaric(char ch) {
+        //     if ((ch >= '0' && ch <= '9') ||
+        //         (tolower(ch) >= 'a' && tolower(ch) <= 'z')) {
+        //         return true;
+        //     }
+        //     return false;
+        // }
+
+        bool isPalindrome(string s) {
+            int st = 0, end = s.size() - 1;
+
+            while (st < end) {
+                // AGAR character alphanumeric NAHI hai, toh skip karein (!)
+                if (!isalnum(s[st])) {
+                    st++;
+                    continue;
+                }
+                if (!isalnum(s[end])) {
+                    end--;
+                    continue;
+                }
+
+                // Dono valid characters ko compare karein
+                if (tolower(s[st]) != tolower(s[end])) {
+                    return false;
+                }
+                st++;
+                end--;
+            }
+            return true;
+        }
+    };
